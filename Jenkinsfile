@@ -72,5 +72,5 @@ pipeline {
                 sh 'docker run -d -p 8081:80 wpatterson134/netflix:latest'
             }
         }
-    
+    }
 }
