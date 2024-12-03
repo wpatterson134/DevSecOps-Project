@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'DOCKERTAG', value: env.BUILD_NUMBER, description: 'Tag for the Docker image')
+        string(name: 'DOCKERTAG', defaultValue: env.BUILD_NUMBER, description: 'Tag for the Docker image')
     }
     stages {
         stage('Clone repository') {
