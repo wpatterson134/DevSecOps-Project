@@ -73,5 +73,9 @@ pipeline {
         //         sh 'docker run -d -p 8081:80 wpatterson134/netflix:latest'
         //     }
         // }
+        stage("Trigger ManifestUpdate") {
+                sh "echo 'triggering updatemanifestjob'"
+                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: 'latest')]
+        }
     }
 }
