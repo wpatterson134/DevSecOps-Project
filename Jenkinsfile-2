@@ -19,7 +19,7 @@ node {
                         sh "sed -i 's+wpatterson134/netflix.*+wpatterson134/netflix:${DOCKERTAG}+g' ./Kubernetes/deployment.yaml"
                         sh "cat ./Kubernetes/deployment.yaml"
                         sh "git add ."
-                        sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
+                        sh "git commit -m 'Done by Jenkins Job changemanifest: latest'"
                         sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/DevSecOps-Project.git HEAD:main"
       }
     }
