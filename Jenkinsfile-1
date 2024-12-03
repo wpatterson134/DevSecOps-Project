@@ -57,8 +57,8 @@ pipeline {
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
                        sh "docker build --build-arg TMDB_V3_API_KEY=ff33ae529a4dbd3b76f77ce5c039e4bc -t netflix ."
-                       sh "docker tag netflix wpatterson134/netflix:latest "
-                       sh "docker push wpatterson134/netflix:latest "
+                       sh "docker tag netflix wpatterson134/netflix:${env.BUILD_NUMBER} "
+                       sh "docker push wpatterson134/netflix:${env.BUILD_NUMBER} "
                     }
                 }
             }
@@ -77,7 +77,7 @@ pipeline {
             steps {
                 script {
                     sh "echo 'triggering updatemanifestjob'"
-                    build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: 'latest')]
+                    build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
                 }
             }
         }
