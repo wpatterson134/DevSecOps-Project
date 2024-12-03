@@ -74,8 +74,12 @@ pipeline {
         //     }
         // }
         stage("Trigger ManifestUpdate") {
-                sh "echo 'triggering updatemanifestjob'"
-                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: 'latest')]
+            steps {
+                script {
+                    sh "echo 'triggering updatemanifestjob'"
+                    build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: 'latest')]
+                }
+            }
         }
     }
 }
